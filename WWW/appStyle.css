@@ -1,0 +1,8 @@
+body {
+ font-family: "optima";
+}
+
+.container-fluid { 
+  max-width: 1000px;
+  margin: 0 auto;
+}
