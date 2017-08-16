@@ -25,7 +25,7 @@ source("helperFuncs/firebaseHelpers.R")
 source("helperFuncs/apiLimitMessage.R")
 
 # Set dev to false if deploying to shinyapps. Dev = true uses Nick's api info that is setup for local development. 
-dev <- TRUE
+dev <- FALSE
 
 # Load all the super secret api info. 
 if(dev){
@@ -33,6 +33,7 @@ if(dev){
 } else {
   source("helperFuncs/loadApiCredentials.R")
 }
+
 
 ui <- fluidPage(
   useShinyjs(),
@@ -198,8 +199,7 @@ server <- function(input, output) {
       write.csv(state$daysProfile, file)
     }
   )
- 
-}
+} #end of server function
 
 # Run the application
 shinyApp( ui = ui, server = server, options = c("port" = 1410) )

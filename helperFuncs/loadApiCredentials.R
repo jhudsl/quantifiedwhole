@@ -39,3 +39,6 @@
 firebaseToken <- readRDS("apiCredentials/firebaseToken.rds")
 dbToken <- readRDS("apiCredentials/dbToken.rds")
 fitbitApiInfo <- readRDS("apiCredentials/fitbitApiInfo.rds")
+# fitbitApiInfo$redirect_uri = "https://jhubiostatistics.shinyapps.io/quantifiedwhole/"
+# saveRDS(fitbitApiInfo, "apiCredentials/fitbitApiInfo.rds")
+
