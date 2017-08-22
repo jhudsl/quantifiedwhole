@@ -54,4 +54,21 @@ body {
   cursor: default !important;
   border-color: #aaa !important;
 }
+
+#submitDates {
+  margin-top: 31px;
+}
+
+#stepsLegend {
+  color: #66c2a5;
+  text-decoration: overline;
+  margin-top: 45px;
+}
+
+#hrLegend {
+  color: #8da0cb;
+  text-decoration: overline;
+  margin-top: 45px;
+}
 "
+

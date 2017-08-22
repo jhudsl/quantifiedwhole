@@ -19,15 +19,14 @@ shinyjs.enableTab = function(selector) {
 }
 "
 
-
 #Spinning helix loader
 hideLoader <- function(){
-  print("hiding loader")
+  # print("hiding loader")
   shinyjs::hide(selector = "#tag_downloading_animation", anim = TRUE)
 }
 
 showLoader <- function(){
-  print("showing loader")
+  # print("showing loader")
   shinyjs::show(selector = "#tag_downloading_animation")
 }
 

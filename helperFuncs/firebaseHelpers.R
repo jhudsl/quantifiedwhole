@@ -61,6 +61,8 @@ findUserInFirebase <- function(firebase_token, userInfo){
     encode = "json"
   ) %>% httr::content()
   
+  print('firebase user info result')
+  print(result)
   # If our query returns empty.
   if(is.null(result)){
     result <- addUser(firebase_token, userInfo)

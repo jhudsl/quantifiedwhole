@@ -25,7 +25,7 @@ source("helperFuncs/firebaseHelpers.R")
 source("helperFuncs/apiLimitMessage.R")
 
 # Set dev to false if deploying to shinyapps. Dev = true uses Nick's api info that is setup for local development. 
-dev <- FALSE
+dev <- TRUE
 
 # Load all the super secret api info. 
 if(dev){
@@ -62,11 +62,12 @@ server <- function(input, output) {
   # Call reducer script to set up reducer function with state context. 
   source("helperFuncs/reducer.R", local = TRUE)
   
+  reducerLogging <- FALSE
   # Run state through empty reducer to initialize
   isolate({reducer()})
 
   # Start with the tabs disabled as the user isn't logged in yet.
-  disableTabs()
+  # disableTabs()
 
   # Fitbit authentication button. 
   loginButton <- callModule(shinyLogin, "fitbit_login", api_info = fitbitApiInfo)
@@ -99,6 +100,7 @@ server <- function(input, output) {
 
     # Get our user metadata from firebase. 
     userStats <- findUserInFirebase(firebaseToken, userInfo)
+    print(userStats)
     
     # Find what days they have already downloaded. 
     previouslyDownloaded <- getAlreadyDownloadedDays(userStats)
@@ -109,7 +111,7 @@ server <- function(input, output) {
   })
   
   
-  observeEvent(input$desiredDaysPicker, {
+  observeEvent(input$submitDates, {
     # We require user token because otherwise this will fire at startup and we will 
     # accidentally try and grab data with not api token.
     req(state$userToken) 

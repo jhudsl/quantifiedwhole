@@ -84,7 +84,7 @@ filePaths_reducer <- function(paths = list(raw = NULL, tags = NULL), action){
 # You could entirely provide the functionality in this function, however i think it's clearer to 
 # break out into individual pure functions for each element. 
 reducer <- function(type = "INITIALIZE", payload = NULL){
-  print(paste("running the action", type))
+  if(reducerLogging) print(paste("running the action", type))
   actionList <-  list(type = type, payload = payload)
   
   # if its first time we run all the reducers on their respective state components. 
