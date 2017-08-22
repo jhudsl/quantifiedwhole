@@ -62,12 +62,12 @@ server <- function(input, output) {
   # Call reducer script to set up reducer function with state context. 
   source("helperFuncs/reducer.R", local = TRUE)
   
-  reducerLogging <- FALSE
+  reducerLogging <- TRUE
   # Run state through empty reducer to initialize
   isolate({reducer()})
 
   # Start with the tabs disabled as the user isn't logged in yet.
-  # disableTabs()
+  disableTabs()
 
   # Fitbit authentication button. 
   loginButton <- callModule(shinyLogin, "fitbit_login", api_info = fitbitApiInfo)
@@ -156,13 +156,11 @@ server <- function(input, output) {
   
   # userTags() will fire when the user has created a new tag. 
   observeEvent(userTags(), {
-    print(userTags())
     reducer(type = "SET_ACTIVITY_TAGS", payload = userTags())
   })
   
   # After new tags have been added to the state send them to dropbox as well. 
   observeEvent(state$activityTags, {
-    print(state$activityTags)
     uploadDataToDropbox(state$activityTags, dbToken, state$filePaths$tags)
   })
   

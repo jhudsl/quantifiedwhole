@@ -2,8 +2,8 @@ tagPanel <- function(){
   div(
     br(),
     div(
-      "Tag your data by clicking and dragging your cursor over a region of your plotted data. A small dialog will appear that you can enter your",
-      "activity label into. The aggregate counts of your tags will appear above for your reference. The more tags for a given activity we have the better",
+      "Tag your physical activities by clicking and dragging your cursor over a region of your plotted data. A dialog will appear in which you can enter the",
+      "activity label. Aggregate counts of your tags will appear above for reference. The more tags you make for a given activity the better",
       "our algorithm will be able to predict it in the future!"
     ),
     hr(),
@@ -31,7 +31,9 @@ tagPanel <- function(){
             h3("Heart Rate", id = "hrLegend")
           )
         ),
-        taggingModuleUI('tagviz')
+        taggingModuleUI('tagviz'),
+        p("Note: If tagging events is not working for you, please send a note to n.strayer [at] vanderbilt [dot] edu with ",
+          "info on your computer setup and if possible a screenshot of what is happening.")
     )
   )
 }
